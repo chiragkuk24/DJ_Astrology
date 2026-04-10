@@ -824,6 +824,26 @@ p {
         width: 250px;
         height: 250px;
     }
+    
+    /* Testimonials mobile adjustments for tablets */
+    .testimonials-slider {
+        max-width: 90%;
+    }
+    
+    .slider-container {
+        padding: var(--spacing-lg);
+        min-height: 280px;
+    }
+    
+    .testimonial-text {
+        font-size: 1.1rem;
+        padding-left: var(--spacing-md);
+    }
+    
+    .testimonial-text::before {
+        font-size: 3rem;
+        top: -5px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -873,6 +893,39 @@ p {
         flex-direction: column;
         gap: var(--spacing-sm);
     }
+    
+    /* Testimonials mobile adjustments for small tablets */
+    .testimonials-slider {
+        max-width: 95%;
+    }
+    
+    .slider-container {
+        padding: var(--spacing-md);
+        min-height: 260px;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+        padding-left: var(--spacing-sm);
+        line-height: 1.6;
+    }
+    
+    .testimonial-text::before {
+        font-size: 2.5rem;
+        top: -3px;
+    }
+    
+    .author-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
+    .slider-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -913,5 +966,66 @@ p {
     
     .img-placeholder {
         font-size: 5rem;
+    }
+    
+    /* Testimonials mobile adjustments for smallest screens */
+    .testimonials-slider {
+        max-width: 100%;
+    }
+    
+    .slider-container {
+        padding: var(--spacing-sm);
+        min-height: 240px;
+    }
+    
+    .testimonial {
+        padding: var(--spacing-md);
+    }
+    
+    .testimonial-text {
+        font-size: 0.95rem;
+        padding-left: var(--spacing-sm);
+        line-height: 1.5;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .testimonial-text::before {
+        font-size: 2rem;
+        top: 0;
+    }
+    
+    .author-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        margin-right: var(--spacing-sm);
+    }
+    
+    .author-info h4 {
+        font-size: 1rem;
+    }
+    
+    .author-info p {
+        font-size: 0.8rem;
+    }
+    
+    .slider-controls {
+        margin-top: var(--spacing-md);
+        gap: var(--spacing-sm);
+    }
+    
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .slider-dots {
+        gap: 8px;
+    }
+    
+    .slider-dot {
+        width: 10px;
+        height: 10px;
     }
 }
