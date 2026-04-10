@@ -787,35 +787,6 @@ p {
     color: var(--color-accent);
 }
 
-.footer-whatsapp {
-    margin: var(--spacing-md) 0;
-    padding: var(--spacing-sm) 0;
-}
-
-.whatsapp-button {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-xs);
-    background-color: #25D366; /* WhatsApp green */
-    color: white;
-    padding: 12px 24px;
-    border-radius: var(--radius-lg);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-md);
-}
-
-.whatsapp-button:hover {
-    background-color: #128C7E; /* Darker WhatsApp green */
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-    color: white;
-}
-
-.whatsapp-button i {
-    font-size: 1.5rem;
-}
 
 .copyright {
     color: var(--color-gray);
