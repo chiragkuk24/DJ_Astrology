@@ -1,4 +1,4 @@
-/* Celestial Insights - Professional Astrology Website */
+/* Thread of Stars by Divya - Professional Astrology Website */
 /* CSS Reset and Base Styles */
 * {
     margin: 0;
@@ -322,29 +322,39 @@ p {
     align-items: center;
 }
 
-.moon-graphic {
+.zodiac-wheel {
     position: relative;
-    width: 300px;
-    height: 300px;
-}
-
-.moon {
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 30%, #f4e4a6, #d4af37);
-    border-radius: 50%;
-    box-shadow: 
-        inset -20px -20px 40px rgba(0, 0, 0, 0.3),
-        0 0 60px rgba(212, 175, 55, 0.5);
+    width: 350px;
+    height: 350px;
     animation: float 6s ease-in-out infinite;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+.wheel-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at 30% 30%, #f4e4a6, #d4af37);
+    border-radius: 50%;
+    box-shadow:
+        inset -10px -10px 20px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(212, 175, 55, 0.5);
+    z-index: 2;
 }
 
-.orbit {
+.wheel-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: spin 40s linear infinite;
+}
+
+.wheel-orbit {
     position: absolute;
     top: -20px;
     left: -20px;
@@ -352,7 +362,61 @@ p {
     bottom: -20px;
     border: 1px dashed rgba(212, 175, 55, 0.3);
     border-radius: 50%;
-    animation: spin 30s linear infinite;
+    animation: spin 60s linear infinite reverse;
+}
+
+.zodiac-sign {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    font-weight: bold;
+    transform-origin: 0 0;
+    text-align: center;
+}
+
+.zodiac-symbol {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.zodiac-animal {
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--color-accent-light);
+    opacity: 0.9;
+}
+
+.zodiac-sign:nth-child(1) { transform: rotate(calc(30deg * 0)) translate(155px) rotate(calc(-30deg * 0)); }
+.zodiac-sign:nth-child(2) { transform: rotate(calc(30deg * 1)) translate(155px) rotate(calc(-30deg * 1)); }
+.zodiac-sign:nth-child(3) { transform: rotate(calc(30deg * 2)) translate(155px) rotate(calc(-30deg * 2)); }
+.zodiac-sign:nth-child(4) { transform: rotate(calc(30deg * 3)) translate(155px) rotate(calc(-30deg * 3)); }
+.zodiac-sign:nth-child(5) { transform: rotate(calc(30deg * 4)) translate(155px) rotate(calc(-30deg * 4)); }
+.zodiac-sign:nth-child(6) { transform: rotate(calc(30deg * 5)) translate(155px) rotate(calc(-30deg * 5)); }
+.zodiac-sign:nth-child(7) { transform: rotate(calc(30deg * 6)) translate(155px) rotate(calc(-30deg * 6)); }
+.zodiac-sign:nth-child(8) { transform: rotate(calc(30deg * 7)) translate(155px) rotate(calc(-30deg * 7)); }
+.zodiac-sign:nth-child(9) { transform: rotate(calc(30deg * 8)) translate(155px) rotate(calc(-30deg * 8)); }
+.zodiac-sign:nth-child(10) { transform: rotate(calc(30deg * 9)) translate(155px) rotate(calc(-30deg * 9)); }
+.zodiac-sign:nth-child(11) { transform: rotate(calc(30deg * 10)) translate(155px) rotate(calc(-30deg * 10)); }
+.zodiac-sign:nth-child(12) { transform: rotate(calc(30deg * 11)) translate(155px) rotate(calc(-30deg * 11)); }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes spin {
@@ -499,6 +563,32 @@ p {
 }
 
 
+/* Services Slider */
+.services-slider {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.slider-container .service-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.slider-container .service-card.active {
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+}
+
 /* Testimonials Section */
 .testimonials {
     padding: var(--spacing-xl) 0;
@@ -531,11 +621,13 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    pointer-events: none;
 }
 
 .testimonial.active {
     opacity: 1;
     position: relative;
+    pointer-events: auto;
 }
 
 .testimonial-text {
@@ -793,6 +885,155 @@ p {
     font-size: 0.9rem;
 }
 
+/* Panchang Section */
+.panchang {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-secondary);
+}
+
+.panchang-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.panchang-date {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.panchang-date h3 {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-accent);
+}
+
+.panchang-date h3 i {
+    margin-right: 10px;
+}
+
+#hindi-date {
+    font-size: 1.2rem;
+    color: var(--color-accent-light);
+    font-style: italic;
+}
+
+.panchang-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.panchang-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+}
+
+.panchang-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-glow);
+}
+
+.panchang-icon {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+.panchang-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-white);
+}
+
+.panchang-card p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-accent-light);
+    margin-bottom: 5px;
+}
+
+.panchang-detail {
+    font-size: 0.9rem !important;
+    color: var(--color-silver) !important;
+    font-style: italic;
+    margin-bottom: 0 !important;
+}
+
+.auspicious-timings {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    margin-bottom: var(--spacing-lg);
+}
+
+.auspicious-timings h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-accent);
+    text-align: center;
+}
+
+.auspicious-timings h3 i {
+    margin-right: 10px;
+}
+
+.timings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.timing-card {
+    background-color: rgba(10, 14, 42, 0.5);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.timing-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-white);
+}
+
+.timing-card p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-accent-light);
+    margin-bottom: 0;
+}
+
+.panchang-note {
+    text-align: center;
+    padding: var(--spacing-md);
+    background-color: rgba(212, 175, 55, 0.1);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-accent);
+}
+
+.panchang-note p {
+    color: var(--color-accent-light);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+.panchang-note i {
+    margin-right: 8px;
+    color: var(--color-accent);
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
     h1 {
@@ -820,10 +1061,36 @@ p {
         grid-template-columns: 1fr;
     }
     
-    .moon-graphic {
-        width: 250px;
-        height: 250px;
+    .zodiac-wheel {
+        width: 320px;
+        height: 320px;
     }
+    
+    .zodiac-sign {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .zodiac-symbol {
+        font-size: 2.2rem;
+    }
+    
+    .zodiac-animal {
+        font-size: 1.1rem;
+    }
+    
+    .zodiac-sign:nth-child(1) { transform: rotate(calc(30deg * 0)) translate(135px) rotate(calc(-30deg * 0)); }
+    .zodiac-sign:nth-child(2) { transform: rotate(calc(30deg * 1)) translate(135px) rotate(calc(-30deg * 1)); }
+    .zodiac-sign:nth-child(3) { transform: rotate(calc(30deg * 2)) translate(135px) rotate(calc(-30deg * 2)); }
+    .zodiac-sign:nth-child(4) { transform: rotate(calc(30deg * 3)) translate(135px) rotate(calc(-30deg * 3)); }
+    .zodiac-sign:nth-child(5) { transform: rotate(calc(30deg * 4)) translate(135px) rotate(calc(-30deg * 4)); }
+    .zodiac-sign:nth-child(6) { transform: rotate(calc(30deg * 5)) translate(135px) rotate(calc(-30deg * 5)); }
+    .zodiac-sign:nth-child(7) { transform: rotate(calc(30deg * 6)) translate(135px) rotate(calc(-30deg * 6)); }
+    .zodiac-sign:nth-child(8) { transform: rotate(calc(30deg * 7)) translate(135px) rotate(calc(-30deg * 7)); }
+    .zodiac-sign:nth-child(9) { transform: rotate(calc(30deg * 8)) translate(135px) rotate(calc(-30deg * 8)); }
+    .zodiac-sign:nth-child(10) { transform: rotate(calc(30deg * 9)) translate(135px) rotate(calc(-30deg * 9)); }
+    .zodiac-sign:nth-child(11) { transform: rotate(calc(30deg * 10)) translate(135px) rotate(calc(-30deg * 10)); }
+    .zodiac-sign:nth-child(12) { transform: rotate(calc(30deg * 11)) translate(135px) rotate(calc(-30deg * 11)); }
     
     /* Testimonials mobile adjustments for tablets */
     .testimonials-slider {
@@ -843,6 +1110,39 @@ p {
     .testimonial-text::before {
         font-size: 3rem;
         top: -5px;
+    }
+    
+    /* Panchang responsive adjustments for tablets */
+    .panchang-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .timings-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .panchang-date h3 {
+        font-size: 1.6rem;
+    }
+    
+    #hindi-date {
+        font-size: 1.1rem;
+    }
+    
+    .panchang-card h4 {
+        font-size: 1.2rem;
+    }
+    
+    .panchang-card p {
+        font-size: 1.2rem;
+    }
+    
+    .timing-card h4 {
+        font-size: 1rem;
+    }
+    
+    .timing-card p {
+        font-size: 1rem;
     }
 }
 
@@ -954,10 +1254,41 @@ p {
         grid-template-columns: 1fr;
     }
     
-    .moon-graphic {
-        width: 200px;
-        height: 200px;
+    .zodiac-wheel {
+        width: 250px;
+        height: 250px;
     }
+    
+    .wheel-center {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .zodiac-sign {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .zodiac-symbol {
+        font-size: 1.8rem;
+    }
+    
+    .zodiac-animal {
+        font-size: 0.9rem;
+    }
+    
+    .zodiac-sign:nth-child(1) { transform: rotate(calc(30deg * 0)) translate(100px) rotate(calc(-30deg * 0)); }
+    .zodiac-sign:nth-child(2) { transform: rotate(calc(30deg * 1)) translate(100px) rotate(calc(-30deg * 1)); }
+    .zodiac-sign:nth-child(3) { transform: rotate(calc(30deg * 2)) translate(100px) rotate(calc(-30deg * 2)); }
+    .zodiac-sign:nth-child(4) { transform: rotate(calc(30deg * 3)) translate(100px) rotate(calc(-30deg * 3)); }
+    .zodiac-sign:nth-child(5) { transform: rotate(calc(30deg * 4)) translate(100px) rotate(calc(-30deg * 4)); }
+    .zodiac-sign:nth-child(6) { transform: rotate(calc(30deg * 5)) translate(100px) rotate(calc(-30deg * 5)); }
+    .zodiac-sign:nth-child(7) { transform: rotate(calc(30deg * 6)) translate(100px) rotate(calc(-30deg * 6)); }
+    .zodiac-sign:nth-child(8) { transform: rotate(calc(30deg * 7)) translate(100px) rotate(calc(-30deg * 7)); }
+    .zodiac-sign:nth-child(9) { transform: rotate(calc(30deg * 8)) translate(100px) rotate(calc(-30deg * 8)); }
+    .zodiac-sign:nth-child(10) { transform: rotate(calc(30deg * 9)) translate(100px) rotate(calc(-30deg * 9)); }
+    .zodiac-sign:nth-child(11) { transform: rotate(calc(30deg * 10)) translate(100px) rotate(calc(-30deg * 10)); }
+    .zodiac-sign:nth-child(12) { transform: rotate(calc(30deg * 11)) translate(100px) rotate(calc(-30deg * 11)); }
     
     .astrologer-img {
         width: 250px;
@@ -1027,5 +1358,73 @@ p {
     .slider-dot {
         width: 10px;
         height: 10px;
+    }
+    
+    /* Panchang responsive adjustments for mobile */
+    .panchang-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .timings-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+    
+    .panchang-date h3 {
+        font-size: 1.4rem;
+    }
+    
+    #hindi-date {
+        font-size: 1rem;
+    }
+    
+    .panchang-card {
+        padding: var(--spacing-md);
+    }
+    
+    .panchang-icon {
+        font-size: 2rem;
+    }
+    
+    .panchang-card h4 {
+        font-size: 1.1rem;
+    }
+    
+    .panchang-card p {
+        font-size: 1.1rem;
+    }
+    
+    .panchang-detail {
+        font-size: 0.85rem !important;
+    }
+    
+    .auspicious-timings {
+        padding: var(--spacing-md);
+    }
+    
+    .auspicious-timings h3 {
+        font-size: 1.3rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .timing-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .timing-card h4 {
+        font-size: 0.95rem;
+    }
+    
+    .timing-card p {
+        font-size: 0.95rem;
+    }
+    
+    .panchang-note {
+        padding: var(--spacing-sm);
+    }
+    
+    .panchang-note p {
+        font-size: 0.9rem;
     }
 }
